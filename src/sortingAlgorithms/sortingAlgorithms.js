@@ -55,3 +55,44 @@ function doMerge(
         mainArray[k++] = auxiliaryArray[j++];
     }
 }
+
+export function getQuickSortAnimations(array) {
+    const animations = [];
+    if (array.length <= 1) return array;
+    quickSortHelper(array, 0, array.length - 1, animations)
+    return animations;
+}
+
+function quickSortHelper(array, low, high, animations) {
+    if (low < high) {
+        let pivot = doPartition(array, low, high, animations);
+        quickSortHelper(array, low, pivot - 1, animations);
+        quickSortHelper(array, pivot + 1, high, animations);
+    }
+}
+
+function doPartition(array, low, high, animations) {
+    let pivot = array[high];
+    let k = low - 1;
+
+    for (let i = low; i < high; i++) {
+        if (array[i] < pivot) {
+            k++;
+            animations.push([i, k]);
+            animations.push([i, k]);
+            animations.push([k, array[i]]);
+            animations.push([i, array[k]]);
+            let temp = array[i];
+            array[i] = array[k];
+            array[k] = temp;
+        }
+    }
+    animations.push([k + 1, high]);
+    animations.push([k + 1, high]);
+    animations.push([k + 1, pivot]);
+    animations.push([high, array[k + 1]]);
+    let temp = array[k + 1];
+    array[k + 1] = pivot;
+    array[high] = temp;
+    return k + 1;
+}
