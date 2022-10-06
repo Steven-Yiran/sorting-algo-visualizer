@@ -6,9 +6,9 @@ import "./SortingVisualizer.css"
 
 const ANIMATION_SPEED_MS = 6;
 
-const PRIMARY_COLOR = "sequoise";
+const PRIMARY_COLOR = "red";
 
-const SECONDARY_COLOR = "red";
+const SECONDARY_COLOR = "sequoise";
 
 export default class SortingVisualizer extends React.Component {
     constructor(props) {
