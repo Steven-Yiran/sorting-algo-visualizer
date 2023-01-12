@@ -29,7 +29,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
-        const animations = getMergeSortAnimations(this.state.array);
+        const animations = getMergeSortAnimations(this.state.array)[1];
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 3 !== 2;
@@ -53,7 +53,7 @@ export default class SortingVisualizer extends React.Component {
     }
 
     quickSort() {
-        const animations = getQuickSortAnimations(this.state.array);
+        const animations = getQuickSortAnimations(this.state.array)[1];
         for (let i = 0; i < animations.length; i++) {
             const arrayBars = document.getElementsByClassName('array-bar');
             const isColorChange = i % 4 < 2;
@@ -80,19 +80,6 @@ export default class SortingVisualizer extends React.Component {
 
     bubbleSort() {}
 
-    // testSortingAlgorithms() {
-    //     for (let i = 0; i < 100; i++) {
-    //         const array = [];
-    //         const length = randomIntFromInterval(1, 1000);
-    //         for (let i = 0; i < length; i++) {
-    //             array.push(randomIntFromInterval(-1000, 1000));
-    //         }
-    //         const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-    //         const mergeSortedArray = sortingAlgorithms.mergeSort(array.slice());
-    //         console.log(arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
-    //     }
-    // }
-
     render() {
         const {array} = this.state;
 
@@ -118,16 +105,6 @@ export default class SortingVisualizer extends React.Component {
     };
 }
 
-function randomIntFromInterval(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min)
+export function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-// function arraysAreEqual(arr1, arr2) {
-//     if (arr1.length !== arr2.length) return false;
-//     for (let i = 0; i < arr1.length; i++) {
-//         if (arr1[i] !== arr2[i]) {
-//             return false;
-//         }
-//     }
-//     return true;
-// }

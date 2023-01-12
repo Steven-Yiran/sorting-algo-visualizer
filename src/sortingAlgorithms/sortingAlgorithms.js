@@ -3,7 +3,7 @@ export function getMergeSortAnimations(array) {
     if (array.length <= 1) return array;
     const auxiliaryArray = array.slice();
     mergeSortHelper(array, 0, array.length - 1, auxiliaryArray, animations);
-    return animations;
+    return [array, animations];
 }
 
 function mergeSortHelper(
@@ -58,9 +58,9 @@ function doMerge(
 
 export function getQuickSortAnimations(array) {
     const animations = [];
-    if (array.length <= 1) return array;
+    if (array.length <= 1) return [array, animations];
     quickSortHelper(array, 0, array.length - 1, animations)
-    return animations;
+    return [array, animations];
 }
 
 function quickSortHelper(array, low, high, animations) {
@@ -69,6 +69,7 @@ function quickSortHelper(array, low, high, animations) {
         quickSortHelper(array, low, pivot - 1, animations);
         quickSortHelper(array, pivot + 1, high, animations);
     }
+    return array;
 }
 
 function doPartition(array, low, high, animations) {
