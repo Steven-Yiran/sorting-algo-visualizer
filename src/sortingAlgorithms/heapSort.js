@@ -5,13 +5,18 @@ export function getHeapSortAnimations(array) {
         heapify(array, i, array.length, animations);
     }
     for (let i = array.length - 1; i > 0; i--) {
+        animations.push([0, i]);
+        animations.push([0, i]);
+        animations.push([0, array[i]]);
+        animations.push([i, array[0]]);
+
         let temp = array[0];
         array[0] = array[i];
         array[i] = temp;
 
         heapify(array, 0, i, animations);
     }
-    return animations;
+    return [array, animations];
 }
 
 /**
@@ -40,7 +45,8 @@ function heapify(
         animations.push([largest, rootIdx]);
         animations.push([rootIdx, mainArray[largest]]);
         animations.push([largest, mainArray[rootIdx]]);
-        let temp = mainArray[rootIdx];
+
+        const temp = mainArray[rootIdx];
         mainArray[rootIdx] = mainArray[largest];
         mainArray[largest] = temp;
 

@@ -32,7 +32,9 @@ function doMerge(
     let i = startIdx;
     let j = middleIdx + 1;
     while (i <= middleIdx && j <= endIdx) {
+        // change color
         animations.push([i, j]);
+        // revert color
         animations.push([i, j]);
         if (auxiliaryArray[i] <= auxiliaryArray[j]) {
             animations.push([k, auxiliaryArray[i]]);
